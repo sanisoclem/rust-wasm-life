@@ -51,6 +51,9 @@ impl fmt::Display for Universe {
 /// Public methods, exported to JavaScript.
 #[wasm_bindgen]
 impl Universe {
+    pub fn new_default() -> Universe {
+        Universe::new(64,64)
+    }
     pub fn new(width: u32, height: u32) -> Universe {
         let cells = (0..width * height)
             .map(|i| {
@@ -157,7 +160,7 @@ impl Universe {
         }
         count
     }
-    
+
     pub fn get_cells(&self) -> &[Cell] {
         &self.cells
     }
